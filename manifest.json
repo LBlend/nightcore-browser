@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Nightcore Browser",
+  "version": "1.0.0",
+  "description": "Nightcore playback: speed up audio/video with natural pitch shift and bass boost.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Nightcore"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "nightcore@nightcore-browser",
+      "strict_min_version": "109.0"
+    }
+  }
+}

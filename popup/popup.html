@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nightcore</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="title-row">
+      <span class="title">NIGHTCORE</span>
+      <label class="toggle" title="Enable / disable">
+        <input type="checkbox" id="enabled">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <p class="subtitle">Speed · Pitch · Bass</p>
+  </div>
+
+  <div class="section" id="controls">
+    <div class="row">
+      <span class="label">Speed</span>
+      <div class="btn-group">
+        <button class="speed-btn" data-speed="1.25">1.25×</button>
+        <button class="speed-btn" data-speed="1.5">1.5×</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <span class="label">Bass boost</span>
+      <div class="bass-row">
+        <input type="range" id="bass" min="0" max="12" step="1" value="6">
+        <span class="bass-val" id="bass-val">6 dB</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
