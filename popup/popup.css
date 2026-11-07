@@ -88,6 +88,13 @@ body {
   background: #e0aaff;
 }
 
+.toggle input:focus-visible + .slider,
+.speed-btn:focus-visible,
+input[type='range']:focus-visible {
+  outline: 2px solid #bf80ff;
+  outline-offset: 2px;
+}
+
 /* ── Controls section ────────────────────────── */
 .section {
   padding: 12px 16px;
@@ -134,7 +141,7 @@ body {
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
-.speed-btn:hover {
+.speed-btn:hover:not(:disabled) {
   background: #2a1860;
   border-color: #7040c0;
 }
@@ -160,7 +167,6 @@ input[type='range'] {
   height: 4px;
   border-radius: 4px;
   background: #2e2050;
-  outline: none;
   cursor: pointer;
 }
 
@@ -183,7 +189,7 @@ input[type='range']::-moz-range-thumb {
   cursor: pointer;
 }
 
-input[type='range']:hover::-webkit-slider-thumb {
+input[type='range']:hover:not(:disabled)::-webkit-slider-thumb {
   background: #c080ff;
 }
 
