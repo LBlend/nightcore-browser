@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/LBlend/nightcore-browser/compare/v1.1.0...v1.1.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* prevent autoplay from reverting back to 1x speed ([2d34515](https://github.com/LBlend/nightcore-browser/commit/2d34515e9a4a1fa34c751d27de368032b7c1ca2e))
+
 ## [1.1.0](https://github.com/LBlend/nightcore-browser/compare/v1.0.0...v1.1.0) (2026-11-07)
 
 
