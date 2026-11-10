@@ -112,6 +112,29 @@
     }, true);
   }
 
+  // Some players reset the rate themselves when loading the next track, e.g.
+  // YouTube Music on autoplay. That can happen after 'play' has already fired,
+  // especially in background tabs where the page's timers are throttled. Put
+  // our rate back whenever it changes, but give up on an element that keeps
+  // fighting back so the two never loop forever.
+  const MAX_CORRECTIONS = 10; // per element, per second
+  const corrections = new WeakMap(); // element -> { count, since }
+
+  document.addEventListener('ratechange', (e) => {
+    const el = e.target;
+    if (!state.enabled || !(el instanceof HTMLMediaElement)) return;
+    if (el.playbackRate === state.speed && el.defaultPlaybackRate === state.speed) return;
+
+    const now = performance.now();
+    let entry = corrections.get(el);
+    if (!entry || now - entry.since > 1000) {
+      entry = { count: 0, since: now };
+      corrections.set(el, entry);
+    }
+    if (++entry.count > MAX_CORRECTIONS) return;
+    applyState(el);
+  }, true);
+
   // A user gesture is what allows a suspended AudioContext to start
   for (const type of ['pointerdown', 'keydown']) {
     document.addEventListener(type, resumeAudio, true);
